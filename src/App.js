@@ -1,11 +1,20 @@
-import React, { useState } from 'react'
-import Square from './Square';
+import { useState } from 'react';
+
+function Square({ value, onSquareClick }) {
+  return (
+    <>
+      <button className='square' onClick={onSquareClick}>
+        {value}
+      </button>
+    </>
+  );
+}
 
 /* 
 Oyuncunun kazanıp kazanmadığını kontrol etmek için Board'da handleClick fonksiyonunda
 calculateWinner(squares)'ı çağırmamız gerekiyor
 */
-function Board() {
+export default function Board() {
   const [xIsNext, setXIsNext] = useState(true);
   const [squares, setSquares] = useState(Array(9).fill(null));
 
@@ -30,7 +39,6 @@ function Board() {
   } else {
     status = "Next Player: " + (xIsNext ? "X" : "O");
   }
-
 
   return (
     <>
@@ -73,5 +81,3 @@ function calculateWinner(squares) {
   }
   return null;
 }
-
-export default Board;
